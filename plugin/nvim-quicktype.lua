@@ -8,8 +8,4 @@ if vim.g.loaded_nvim_quicktype == 1 then
   return
 end
 
--- create any global command that does not depend on user setup
--- usually it is better to define most commands/mappings in the setup function
--- Be careful to not overuse this file
-vim.api.nvim_create_user_command("QuickType", require("nvim-quicktype").generate_type, {})
 vim.g.loaded_nvim_quicktype = 1
