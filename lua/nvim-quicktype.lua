@@ -17,10 +17,10 @@ M.config = config
 -- you can also put some validation here for those.
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
+  vim.api.nvim_create_user_command("QuickType", M.generate_type, {})
 end
 
 M.generate_type = function()
   module.generate_type(M.config)
 end
-
 return M
