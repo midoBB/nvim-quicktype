@@ -2,8 +2,9 @@
 local module = require("nvim-quicktype.module")
 
 ---@class Config
----@field opt string Your config option
-local config = {}
+local config = {
+  js = "js",
+}
 
 ---@class MyModule
 local M = {}
@@ -19,7 +20,7 @@ M.setup = function(args)
 end
 
 M.generate_type = function()
-  module.generate_type()
+  module.generate_type(M.config)
 end
 
 return M

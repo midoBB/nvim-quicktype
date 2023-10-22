@@ -1,11 +1,20 @@
 local M = {}
-
-M.generate_type = function()
+local function getft(key, jsmode)
+  local langs = {
+    ["js"] = jsmode,
+    ["javascript"] = jsmode,
+    ["javascriptreact"] = jsmode,
+    ["go"] = "go",
+  }
+  local value = langs[key]
+  return value
+end
+M.generate_type = function(opts)
   -- Get the JSON from the clipboard.
   local json = vim.fn.getreg("+")
   -- Prompt the user for the top-level type name.
   local top_level_type_name = vim.fn.input("Enter the top-level type name: ")
-  local targetLanguage = vim.bo.ft
+  local targetLanguage = getft(vim.bo.ft, opts.js)
 
   local command = "cat << EoF | quicktype -l "
     .. targetLanguage
