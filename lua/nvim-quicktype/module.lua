@@ -5,6 +5,7 @@ local function getft(key, jsmode)
     ["javascript"] = jsmode,
     ["javascriptreact"] = jsmode,
     ["typescriptreact"] = "ts",
+    ["typescript"] = "ts",
     ["go"] = "go",
   }
   local value = langs[key]
