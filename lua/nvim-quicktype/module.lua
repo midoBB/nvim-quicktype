@@ -78,7 +78,12 @@ local function is_valid_json(str)
   return success
 end
 
-local function get_json_str_from_reg()
+local function get_json_str_from_reg(clipboard_source_register)
+  -- If clipboard_source_register is set, get the JSON from that register
+  if clipboard_source_register then
+    return vim.fn.getreg(clipboard_source_register)
+  end
+
   -- Try to get JSON from the "+" (system) register first
   local json_str = vim.fn.getreg("+")
   if json_str == "" then
@@ -94,7 +99,7 @@ end
 
 M.generate_type = function(config)
   -- Get the JSON string from the register
-  local json_str = get_json_str_from_reg()
+  local json_str = get_json_str_from_reg(config.global.clipboard_source_register)
   -- Check if the string is valid JSON
   if not is_valid_json(json_str) then
     vim.notify("The clipboard content is not valid JSON.", vim.log.levels.ERROR)

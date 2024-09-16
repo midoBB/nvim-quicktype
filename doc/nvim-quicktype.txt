@@ -30,6 +30,7 @@ require("nvim-quicktype").setup({
     telemetry = "disable", -- Send telemetry data to Quicktype (can be "enable", or "disable")
     output_file = nil, -- Output file (if not specified, output is printed to stdout)
     debug_dir = nil, -- Directory to write debug info to (if not specified, no debug info is written)
+    clipboard_source_register = nil, -- Register from which to read the copied JSON (if not specified, if will default to system then to unnamed and lastly to 0 register)
   },
   cmd = "quicktype", -- Path to the quicktype executable
   filetypes = {

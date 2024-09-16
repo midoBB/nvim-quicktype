@@ -14,6 +14,7 @@ local module = require("nvim-quicktype.module")
 ---@field alphabetize_properties boolean
 ---@field telemetry string
 ---@field debug_dir string|nil
+---@field clipboard_source_register string|nil
 
 ---@class Config
 local config = {
@@ -26,6 +27,7 @@ local config = {
     alphabetize_properties = false,
     telemetry = "disable",
     debug_dir = nil,
+    clipboard_source_register = nil
   },
   filetypes = {
     typescript = { lang = "ts", additional_options = {
