@@ -43,7 +43,7 @@ local config = {
       ["just-types"] = true,
     } },
     go = { lang = "go", additional_options = {
-      just_types = true,
+      ["just-types"] = true,
     } },
     rust = { lang = "rs", additional_options = {
       ["no-leading-comments"] = true,
