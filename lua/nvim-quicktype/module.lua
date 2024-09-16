@@ -71,17 +71,30 @@ local function write_debug_info(debug_dir, command)
     end
   end
 end
+
 local function is_valid_json(str)
   -- Attempt to decode the string as JSON
   local success, _ = pcall(vim.json.decode, str)
   return success
 end
-M.generate_type = function(config)
-  -- Try to get JSON from the "+" register (clipboard) first, then fall back to "0" register
+
+local function get_json_str_from_reg()
+  -- Try to get JSON from the "+" (system) register first
   local json_str = vim.fn.getreg("+")
   if json_str == "" then
-    json_str = vim.fn.getreg("0")
+    -- Try to get JSON from the '"' (unnamed) register
+    json_str = vim.fn.getreg('"')
+    if json_str ~= "" then
+      return json_str
+    end
   end
+  --  Fallback to the "0" register
+  return vim.fn.getreg("0")
+end
+
+M.generate_type = function(config)
+  -- Get the JSON string from the register
+  local json_str = get_json_str_from_reg()
   -- Check if the string is valid JSON
   if not is_valid_json(json_str) then
     vim.notify("The clipboard content is not valid JSON.", vim.log.levels.ERROR)
