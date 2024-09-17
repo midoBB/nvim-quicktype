@@ -86,12 +86,12 @@ local function get_json_str_from_reg(clipboard_source_register)
 
   -- Try to get JSON from the "+" (system) register first
   local json_str = vim.fn.getreg("+")
-  if json_str ~= "" then
+  if json_str ~= "" and is_valid_json(json_str) then
     return json_str
   end
   -- Try to get JSON from the '"' (unnamed) register
   json_str = vim.fn.getreg('"')
-  if json_str ~= "" then
+  if json_str ~= "" and is_valid_json(json_str) then
     return json_str
   end
   --  Fallback to the "0" register
