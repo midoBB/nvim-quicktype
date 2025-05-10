@@ -45,6 +45,9 @@ local config = {
     go = { lang = "go", additional_options = {
       ["just-types"] = true,
     } },
+    dart = { lang = "dart", additional_options = {
+      ["just-types"] = true,
+    } },
     rust = { lang = "rs", additional_options = {
       ["no-leading-comments"] = true,
       ["density"] = "dense",

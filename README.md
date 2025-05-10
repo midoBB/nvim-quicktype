@@ -4,7 +4,6 @@ A Neovim plugin for creating types in a multitude of languages based from a JSON
 
 Same behavior as this [VS Code plugin](https://github.com/glideapps/quicktype-vscode).
 
-
 ## Prerequisites
 
 This plugin depends on the `quicktype` CLI tool being installed on your system. You can install it from the [quicktype repository](https://github.com/glideapps/quicktype).
@@ -17,7 +16,7 @@ Use your favorite plugin manager, for example with `lazy.nvim`:
 return {
   "midoBB/nvim-quicktype" ,
   cmd = "QuickType",
-  ft = { "typescript", "python", "java", "go", "rust", "cs", "swift", "elixir", "kotlin" "typescriptreact" }
+  ft = { "typescript", "python", "java", "go", "rust", "cs", "swift", "elixir", "kotlin" "typescriptreact", "dart" }
 }
 ```
 
@@ -31,6 +30,7 @@ return {
 * Python
 * Rust
 * TypeScript
+* Dart
 
 ## Configuration
 
@@ -79,7 +79,7 @@ For more information about the available options, please refer to the help of th
 quicktype --help
 ```
 
-# Usage
+## Usage
 
 You have a JSON in the clipboard or the first register, and you get prompted for the top-level type name.
 
